@@ -1,0 +1,1290 @@
+﻿﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brasa Norte | Restaurante en Valencia</title>
+  <meta name="description" content="Brasa Norte: cocina mediterránea a la brasa, arroces y producto de temporada en Valencia." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Brasa Norte | Restaurante en Valencia" />
+  <meta property="og:description" content="Cocina mediterránea a la brasa, ambiente elegante y reservas para comidas y cenas." />
+  <meta property="og:image" content="assets/images/fallback.svg" />
+  <meta name="theme-color" content="#bd5f36" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Prata&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f7f3ee;
+      --bg-strong: #efe7dc;
+      --surface: #fffdf9;
+      --text: #1d1714;
+      --muted: #6e6159;
+      --brand: #bd5f36;
+      --brand-strong: #9d4520;
+      --brand-accent: #d68a61;
+      --ring: rgba(189, 95, 54, 0.35);
+      --radius: 14px;
+      --radius-lg: 18px;
+      --shadow: 0 10px 28px rgba(28, 20, 16, 0.1);
+      --shadow-soft: 0 20px 44px rgba(28, 20, 16, 0.13);
+      --max: 1140px;
+      --container-pad: 32px;
+      --header-h: 76px;
+      --speed: 220ms;
+      --speed-slow: 520ms;
+      --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+      --font-heading: 'Prata', Georgia, serif;
+      --font-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+      --hero-image-h: 360px;
+      --section-space: 56px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background:
+        radial-gradient(circle at 5% 5%, #ecdcc9 0%, transparent 30%),
+        radial-gradient(circle at 95% 18%, #e9d7c1 0%, transparent 22%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      animation: page-enter 640ms var(--ease-smooth) both;
+    }
+
+    img { max-width: 100%; display: block; }
+    h1, h2, h3 { font-family: var(--font-heading); line-height: 1.1; margin: 0; }
+
+    .container { width: min(100% - var(--container-pad), var(--max)); margin-inline: auto; }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(8px);
+      background: rgba(247, 243, 238, 0.9);
+      border-bottom: 1px solid rgba(110, 97, 89, 0.25);
+      transition: background var(--speed) var(--ease-smooth), box-shadow var(--speed) var(--ease-smooth);
+    }
+
+    .header.scrolled {
+      background: rgba(247, 243, 238, 0.96);
+      box-shadow: 0 8px 22px rgba(29, 23, 20, 0.08);
+    }
+
+    .header-inner {
+      min-height: var(--header-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(140deg, var(--brand), var(--brand-accent));
+      box-shadow: 0 6px 14px rgba(157, 69, 32, 0.3);
+    }
+
+    .brand span { font-size: 1.55rem; font-family: var(--font-heading); }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(110, 97, 89, 0.32);
+      border-radius: 10px;
+      background: var(--surface);
+      color: var(--text);
+      padding: 0;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      transition: transform var(--speed) var(--ease-smooth), box-shadow var(--speed) var(--ease-smooth), border-color var(--speed) var(--ease-smooth);
+    }
+
+    .menu-toggle:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 16px rgba(29, 23, 20, 0.12);
+      border-color: rgba(157, 69, 32, 0.35);
+    }
+
+    .menu-toggle:focus-visible {
+      outline: 3px solid var(--ring);
+      outline-offset: 2px;
+    }
+
+    .menu-icon {
+      width: 18px;
+      height: 14px;
+      display: grid;
+      align-content: space-between;
+    }
+
+    .menu-icon span {
+      display: block;
+      height: 2px;
+      border-radius: 2px;
+      background: currentColor;
+      transition: transform var(--speed) var(--ease-smooth), opacity var(--speed) var(--ease-smooth);
+      transform-origin: center;
+    }
+
+    .menu-toggle.is-open .menu-icon span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .menu-toggle.is-open .menu-icon span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.is-open .menu-icon span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-cta {
+      margin-left: 6px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: linear-gradient(140deg, var(--brand), var(--brand-strong));
+      color: #fff !important;
+      box-shadow: 0 8px 18px rgba(157, 69, 32, 0.24);
+    }
+
+    .nav a.nav-cta:hover,
+    .nav a.nav-cta:focus-visible {
+      background: linear-gradient(140deg, var(--brand), var(--brand-strong));
+      color: #fff !important;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 700;
+      padding: 8px 11px;
+      border-radius: 8px;
+      transition: background var(--speed) var(--ease-smooth), color var(--speed) var(--ease-smooth), transform var(--speed) var(--ease-smooth);
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      color: var(--brand-strong);
+      background: rgba(189, 95, 54, 0.12);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .btn {
+      border: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      padding: 12px 18px;
+      text-decoration: none;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform var(--speed) var(--ease-smooth), box-shadow var(--speed) var(--ease-smooth);
+    }
+
+    .btn:focus-visible {
+      outline: 3px solid var(--ring);
+      outline-offset: 2px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(140deg, var(--brand), var(--brand-strong));
+      color: #fff;
+      box-shadow: 0 8px 18px rgba(157, 69, 32, 0.28);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 14px 26px rgba(157, 69, 32, 0.34);
+    }
+
+    .btn-secondary {
+      background: rgba(189, 95, 54, 0.14);
+      color: var(--brand-strong);
+    }
+
+    .hero {
+      padding: 64px 0 48px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--brand-strong);
+      font-weight: 800;
+    }
+
+    h1 { font-size: clamp(2.15rem, 5vw, 3.9rem); margin-bottom: 12px; }
+
+    .lead { margin: 0 0 18px; color: var(--muted); max-width: 58ch; }
+
+    .cta-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+    .mini-meta { display: flex; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: 0.95rem; }
+
+    .hero-card {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform var(--speed) var(--ease-smooth), box-shadow var(--speed) var(--ease-smooth);
+    }
+
+    .hero-card img { width: 100%; height: var(--hero-image-h); object-fit: cover; }
+    .hero-caption { margin: 0; padding: 14px 16px; color: var(--brand-strong); font-weight: 700; }
+
+    .hero-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .highlights {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .highlight-card {
+      background: var(--surface);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 14px;
+      transition: transform var(--speed) var(--ease-smooth), box-shadow var(--speed) var(--ease-smooth);
+    }
+
+    .highlight-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .highlight-value {
+      margin: 0;
+      font-family: var(--font-heading);
+      font-size: 1.55rem;
+      color: var(--brand-strong);
+    }
+
+    .highlight-label {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    section { padding: var(--section-space) 0; }
+    .section-head { display: flex; justify-content: space-between; gap: 12px; align-items: end; flex-wrap: wrap; margin-bottom: 18px; }
+    .section-head p { margin: 0; color: var(--muted); }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      transition: transform var(--speed) var(--ease-smooth), box-shadow var(--speed) var(--ease-smooth);
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card h3 { font-size: 1.6rem; margin-bottom: 8px; }
+    .card p { margin: 0; color: var(--muted); }
+
+    .menu-list { display: grid; gap: 12px; }
+
+    .menu-item {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px;
+      display: grid;
+      gap: 8px;
+      transition: transform var(--speed) var(--ease-smooth), box-shadow var(--speed) var(--ease-smooth);
+    }
+
+    .menu-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+    .menu-top h3 { font-size: 1.45rem; }
+    .price { color: var(--brand-strong); font-weight: 800; }
+    .menu-item p { margin: 0; color: var(--muted); }
+
+    .menu-item:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      grid-auto-rows: 180px;
+      gap: 12px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      transition: transform var(--speed) var(--ease-smooth), box-shadow var(--speed) var(--ease-smooth);
+    }
+
+    .gallery img:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .gallery img:first-child { grid-row: span 2; }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .experience-panel {
+      background: var(--surface);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform var(--speed) var(--ease-smooth), box-shadow var(--speed) var(--ease-smooth);
+    }
+
+    .experience-panel:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .experience-panel img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+    }
+
+    .experience-content {
+      padding: 14px 16px 16px;
+    }
+
+    .experience-content h3 {
+      font-size: 1.45rem;
+      margin-bottom: 6px;
+    }
+
+    .experience-content p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .quote-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .quote-card {
+      background: var(--surface);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 16px;
+      transition: transform var(--speed) var(--ease-smooth), box-shadow var(--speed) var(--ease-smooth);
+    }
+
+    .quote-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .quote-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+    .quote-author {
+      margin-top: 10px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .reserve-band {
+      background: linear-gradient(130deg, rgba(157, 69, 32, 0.94), rgba(112, 48, 22, 0.96));
+      color: #fff;
+      border-radius: 16px;
+      box-shadow: 0 18px 34px rgba(87, 36, 16, 0.35);
+      padding: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .reserve-band h3 {
+      font-size: clamp(1.5rem, 2.6vw, 2rem);
+      margin-bottom: 6px;
+    }
+
+    .reserve-band p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .reserve-btn {
+      background: #fff;
+      color: var(--brand-strong);
+    }
+
+    .reserve-btn:hover {
+      background: #fff;
+      color: var(--brand-strong);
+    }
+
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
+
+    .info-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+      color: var(--muted);
+    }
+
+    .info-list strong { color: var(--text); }
+
+    .contact-card-title {
+      margin-bottom: 10px;
+    }
+
+    .contact-card-subtitle {
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+
+    .contact-actions {
+      margin-top: 14px;
+    }
+
+    .form {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      transition: transform var(--speed) var(--ease-smooth), box-shadow var(--speed) var(--ease-smooth);
+    }
+
+    .form:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+    label {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      font: inherit;
+      color: var(--text);
+      background: #fff;
+      border: 1px solid rgba(110, 97, 89, 0.35);
+      border-radius: 10px;
+      padding: 10px 12px;
+    }
+
+    textarea { min-height: 120px; resize: vertical; }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: 2px solid var(--ring);
+      border-color: var(--brand);
+    }
+
+    .status { margin-top: 8px; font-weight: 700; min-height: 24px; color: var(--brand-strong); }
+
+    .faq { display: grid; gap: 10px; }
+
+    details {
+      background: var(--surface);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      padding: 12px 14px;
+      transition: transform var(--speed) var(--ease-smooth), box-shadow var(--speed) var(--ease-smooth);
+    }
+
+    details:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    summary { cursor: pointer; font-weight: 700; }
+    details p { margin: 8px 0 0; color: var(--muted); }
+
+    .footer {
+      margin-top: 22px;
+      padding: 24px 0 34px;
+      border-top: 1px solid rgba(110, 97, 89, 0.25);
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .footer-row { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px) scale(0.985);
+      transition: opacity var(--speed-slow) var(--ease-smooth), transform var(--speed-slow) var(--ease-smooth);
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    @keyframes page-enter {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .grid-3,
+      .highlights,
+      .quote-grid,
+      .experience-grid,
+      .split,
+      .gallery,
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card img { height: 300px; }
+      .gallery img:first-child { grid-row: span 1; }
+    }
+
+    @media (max-width: 760px) {
+      .menu-toggle { display: inline-flex; }
+
+      .nav {
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        top: calc(var(--header-h) + 6px);
+        border: 1px solid rgba(110, 97, 89, 0.26);
+        border-radius: 12px;
+        background: var(--surface);
+        box-shadow: var(--shadow);
+        padding: 8px;
+        display: grid;
+        opacity: 0;
+        transform: translateY(-10px) scale(0.985);
+        pointer-events: none;
+        transition: opacity var(--speed) var(--ease-smooth), transform var(--speed) var(--ease-smooth);
+      }
+
+      .nav.open {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+      }
+
+      .hero { padding-top: 44px; }
+      .container { width: min(100% - 24px, var(--max)); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span data-bind="businessName">Brasa Norte</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Abrir menú principal">
+        <span class="menu-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+
+      <nav class="nav" id="mainNav" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#experiencia">Experiencia</a>
+        <a href="menu.html" data-bind-href="menuPageUrl">Menú</a>
+        <a href="#galeria">Galería</a>
+        <a href="#opiniones">Opiniones</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacto">Contacto</a>
+        <a class="nav-cta" data-bind-href="bookingUrl" href="#contacto">Reservar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow" data-bind="tagline">Sabores de brasa, cocina contemporánea</p>
+          <h1 data-bind="heroTitle">Cocina de brasa con producto de temporada</h1>
+          <p class="lead" data-bind="heroDescription">Sabores mediterráneos, técnica actual y una carta pensada para compartir momentos especiales en pleno centro de Valencia.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#contacto">Contactar</a>
+            <a class="btn btn-secondary" href="menu.html" data-bind-href="menuPageUrl">Ver menú</a>
+          </div>
+          <div class="mini-meta">
+            <span data-bind="hoursShort">Mar-Dom 13:00-23:00</span>
+            <span data-bind="city">Valencia, España</span>
+            <a data-bind="phone" data-bind-href="phoneUrl" href="tel:+34960000111">+34 960 000 111</a>
+          </div>
+
+          <div class="highlights" id="highlightGrid"></div>
+        </div>
+
+        <article class="hero-card fade-in">
+          <img data-bind-src="heroImage" src="assets/images/fallback.svg" alt="Interior de restaurante elegante" />
+          <p class="hero-caption" data-bind="heroCaption">Un espacio cálido para disfrutar sin prisas.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="nosotros">
+      <div class="container">
+        <div class="section-head">
+          <h2 data-bind="aboutTitle">Nuestra esencia</h2>
+          <p data-bind="aboutSubtitle">Tres pilares que definen nuestra forma de cocinar y servir.</p>
+        </div>
+        <div class="grid-3" id="featuresGrid"></div>
+      </div>
+    </section>
+
+    <section id="menu">
+      <div class="container">
+        <div class="section-head">
+          <h2 data-bind="menuTitle">Menú destacado</h2>
+          <p data-bind="menuSubtitle">Una selección de nuestros platos más pedidos.</p>
+        </div>
+        <div class="menu-list" id="menuList"></div>
+      </div>
+    </section>
+
+    <section id="experiencia">
+      <div class="container">
+        <div class="section-head">
+          <h2 data-bind="experienceTitle">Una experiencia para recordar</h2>
+          <p data-bind="experienceSubtitle">Más que una cena: cocina, sala y ambiente en equilibrio.</p>
+        </div>
+        <div class="experience-grid" id="experienceGrid"></div>
+      </div>
+    </section>
+
+    <section id="galeria">
+      <div class="container">
+        <div class="section-head">
+          <h2 data-bind="galleryTitle">Galería</h2>
+          <p data-bind="gallerySubtitle">Así se vive Brasa Norte cada día.</p>
+        </div>
+        <div class="gallery" id="galleryGrid"></div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-head">
+          <h2 data-bind="faqTitle">Preguntas frecuentes</h2>
+          <p data-bind="faqSubtitle">Bloque útil para reducir dudas antes de contactar.</p>
+        </div>
+        <div class="faq" id="faqList"></div>
+      </div>
+    </section>
+
+    <section id="opiniones">
+      <div class="container">
+        <div class="section-head">
+          <h2 data-bind="testimonialsTitle">Lo que dicen nuestros clientes</h2>
+          <p data-bind="testimonialsSubtitle">Valoraciones reales sobre cocina, servicio y ambiente.</p>
+        </div>
+        <div class="quote-grid" id="testimonialGrid"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <article class="reserve-band fade-in">
+          <div>
+            <h3 data-bind="bookingTitle">Reserva tu mesa en Brasa Norte</h3>
+            <p data-bind="bookingDescription">Abrimos de martes a domingo. También organizamos eventos privados y grupos.</p>
+          </div>
+          <a class="btn btn-secondary reserve-btn" data-bind-href="bookingUrl" href="#contacto">Reservar ahora</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="container split">
+        <article class="card fade-in">
+          <h2 class="contact-card-title" data-bind="contactTitle">Contacto</h2>
+          <p class="contact-card-subtitle" data-bind="contactSubtitle">Reserva tu mesa o escríbenos para eventos y grupos.</p>
+          <ul class="info-list">
+            <li><strong>Horario:</strong> <span data-bind="hoursLong">Martes a domingo de 13:00 a 16:30 y 20:00 a 23:30</span></li>
+            <li><strong>Dirección:</strong> <span data-bind="address">Calle del Mercado 28, Valencia</span></li>
+            <li><strong>Ciudad:</strong> <span data-bind="city">Valencia, España</span></li>
+            <li><strong>Teléfono:</strong> <span data-bind="phone">+34 960 000 111</span></li>
+            <li><strong>Email:</strong> <span data-bind="email">contacto@brasanorte.com</span></li>
+          </ul>
+          <div class="cta-row contact-actions">
+            <a class="btn btn-secondary" data-bind-href="whatsappUrl" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn btn-secondary" data-bind-href="emailUrl">Email</a>
+          </div>
+        </article>
+
+        <form class="form fade-in" id="contactForm" novalidate>
+          <div class="form-row">
+            <div>
+              <label for="name">Nombre</label>
+              <input id="name" name="name" autocomplete="name" required />
+            </div>
+            <div>
+              <label for="phone">Teléfono</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" />
+            </div>
+          </div>
+
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div>
+            <label for="subject">Asunto</label>
+            <select id="subject" name="subject" required>
+              <option value="">Selecciona una opción</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" required placeholder="Cuéntanos en qué podemos ayudarte"></textarea>
+          </div>
+
+          <button class="btn btn-primary" type="submit">Enviar mensaje</button>
+          <p class="status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-row">
+      <small>© <span id="year"></span> <span data-bind="businessName">Brasa Norte</span>. Todos los derechos reservados.</small>
+      <small data-bind="footerText">Cocina mediterránea a la brasa en Valencia.</small>
+    </div>
+  </footer>
+
+  <script type="application/ld+json" id="schemaData">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Brasa Norte",
+    "telephone": "+34 960 000 111",
+    "email": "contacto@brasanorte.com",
+    "servesCuisine": ["Mediterránea", "Brasa"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle del Mercado 28",
+      "addressLocality": "Valencia",
+      "addressCountry": "ES"
+    },
+    "openingHours": ["Tu-Su 13:00-16:30", "Tu-Su 20:00-23:30"]
+  }
+  </script>
+
+  <script src="assets/images/images.js"></script>
+  <script>
+    const IMAGES = window.APP_IMAGES || {};
+    const FALLBACK_IMAGE = IMAGES.fallback || 'assets/images/fallback.svg';
+
+    // Personaliza SOLO este objeto para adaptar diseño, textos, enlaces y fotos.
+    const CONFIG = {
+      theme: {
+        bg: '#f7f3ee',
+        bgStrong: '#efe7dc',
+        surface: '#fffdf9',
+        text: '#1d1714',
+        muted: '#6e6159',
+        brand: '#bd5f36',
+        brandStrong: '#9d4520',
+        brandAccent: '#d68a61',
+        ring: 'rgba(189, 95, 54, 0.35)',
+        radius: '14px',
+        radiusLg: '18px',
+        containerPad: '32px',
+        heroImageHeight: '360px',
+        sectionSpace: '56px',
+        fontHeading: "'Prata', Georgia, serif",
+        fontBody: "'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif"
+      },
+      seo: {
+        titleSuffix: 'Restaurante en Valencia',
+        description: 'Brasa Norte: cocina mediterránea a la brasa, arroces y producto de temporada en Valencia.',
+        ogImage: IMAGES.index?.seoOg || FALLBACK_IMAGE
+      },
+      businessName: 'Brasa Norte',
+      tagline: 'Sabores de brasa, cocina contemporánea',
+      heroTitle: 'Cocina de brasa con producto de temporada',
+      heroDescription: 'Sabores mediterráneos, técnica actual y una carta pensada para compartir momentos especiales en pleno centro de Valencia.',
+      heroImage: IMAGES.index?.hero || FALLBACK_IMAGE,
+      heroCaption: 'Un espacio cálido para disfrutar sin prisas.',
+      aboutTitle: 'Nuestra esencia',
+      aboutSubtitle: 'Tres pilares que definen nuestra forma de cocinar y servir.',
+      menuTitle: 'Menú destacado',
+      menuSubtitle: 'Una selección de nuestros platos más pedidos.',
+      experienceTitle: 'Una experiencia para recordar',
+      experienceSubtitle: 'Más que una cena: cocina, sala y ambiente en equilibrio.',
+      galleryTitle: 'Galería',
+      gallerySubtitle: 'Así se vive Brasa Norte cada día.',
+      faqTitle: 'Preguntas frecuentes',
+      faqSubtitle: 'Resolvemos las dudas más habituales antes de tu visita.',
+      testimonialsTitle: 'Lo que dicen nuestros clientes',
+      testimonialsSubtitle: 'Valoraciones reales sobre cocina, servicio y ambiente.',
+      bookingTitle: 'Reserva tu mesa en Brasa Norte',
+      bookingDescription: 'Abrimos de martes a domingo. También organizamos eventos privados y grupos.',
+      contactTitle: 'Contacto',
+      contactSubtitle: 'Reserva tu mesa o escríbenos para eventos y grupos.',
+      footerText: 'Cocina mediterránea a la brasa en Valencia.',
+      city: 'Valencia, España',
+      address: 'Calle del Mercado 28, Valencia',
+      phone: '+34 960 000 111',
+      email: 'contacto@brasanorte.com',
+      bookingUrl: '#contacto',
+      hoursShort: 'Mar-Dom 13:00-23:00',
+      hoursLong: 'Martes a domingo de 13:00 a 16:30 y 20:00 a 23:30',
+      menuPageUrl: 'menu.html',
+      schemaCountryCode: 'ES',
+      schemaOpeningHours: ['Tu-Su 13:00-16:30', 'Tu-Su 20:00-23:30'],
+      schemaCuisine: ['Mediterránea', 'Brasa'],
+      features: [
+        { title: 'Producto local', text: 'Trabajamos con ingredientes frescos de mercado y temporada.' },
+        { title: 'Brasa al punto', text: 'Carnes, pescados y verduras cocinados con fuego y precisión.' },
+        { title: 'Ambiente acogedor', text: 'Sala elegante, servicio cercano y atención al detalle.' }
+      ],
+      highlights: [
+        { value: '4.8/5', label: 'Valoración media' },
+        { value: '+1.200', label: 'Reseñas verificadas' },
+        { value: '12 años', label: 'Cuidando cada servicio' }
+      ],
+      menuHighlights: [
+        { name: 'Tartar de atún rojo', price: '19 EUR', description: 'Con aguacate, lima y sésamo tostado.' },
+        { name: 'Arroz meloso de setas', price: '18 EUR', description: 'Cremoso, intenso y con parmesano curado.' },
+        { name: 'Solomillo a la brasa', price: '27 EUR', description: 'Con puré trufado y verduras de temporada.' }
+      ],
+      experiences: [
+        {
+          title: 'Cocina abierta y brasa viva',
+          text: 'Nuestro equipo trabaja con técnica y producto en una propuesta centrada en el sabor del fuego.',
+          image: IMAGES.index?.experiences?.[0] || FALLBACK_IMAGE,
+          alt: 'Chef emplatando en cocina profesional'
+        },
+        {
+          title: 'Sala elegante y servicio cercano',
+          text: 'Ritmo tranquilo, atención precisa y una bodega pensada para cada plato.',
+          image: IMAGES.index?.experiences?.[1] || FALLBACK_IMAGE,
+          alt: 'Sala interior de restaurante elegante'
+        }
+      ],
+      gallery: [
+        { src: IMAGES.index?.gallery?.[0] || FALLBACK_IMAGE, alt: 'Chef en cocina' },
+        { src: IMAGES.index?.gallery?.[1] || FALLBACK_IMAGE, alt: 'Mesa con copas' },
+        { src: IMAGES.index?.gallery?.[2] || FALLBACK_IMAGE, alt: 'Plato gourmet' },
+        { src: IMAGES.index?.gallery?.[3] || FALLBACK_IMAGE, alt: 'Clientes en restaurante' }
+      ],
+      faqs: [
+        { question: '¿Es necesario reservar?', answer: 'Recomendamos reservar, especialmente viernes y sábado por la noche.' },
+        { question: '¿Tenéis opciones vegetarianas o sin gluten?', answer: 'Sí. Disponemos de platos adaptados y control de alérgenos.' },
+        { question: '¿Se pueden celebrar eventos privados?', answer: 'Sí. Organizamos comidas de empresa, cumpleaños y celebraciones.' }
+      ],
+      testimonials: [
+        { text: 'Una de las mejores experiencias de la ciudad. Producto excelente y servicio impecable.', author: 'Marina S.' },
+        { text: 'El arroz meloso y el solomillo estaban espectaculares. Volveremos para probar más carta.', author: 'Carlos P.' },
+        { text: 'Ambiente elegante pero cercano. Ideal para cenas especiales y celebraciones.', author: 'Laura G.' }
+      ],
+      formSubjects: [
+        { value: 'general', label: 'Consulta general' },
+        { value: 'eventos', label: 'Eventos privados' },
+        { value: 'menu', label: 'Menú y alérgenos' },
+        { value: 'colaboracion', label: 'Colaboración' }
+      ]
+    };
+
+    const APP = buildModel(CONFIG);
+
+    function buildModel(config) {
+      const phoneDigits = String(config.phone || '').replace(/\D/g, '');
+      const safePhone = String(config.phone || '').replace(/[^+\d]/g, '');
+      return {
+        ...config,
+        phoneUrl: config.phoneUrl || (safePhone ? `tel:${safePhone}` : '#'),
+        emailUrl: config.emailUrl || (config.email ? `mailto:${config.email}` : '#'),
+        whatsappUrl: config.whatsappUrl || (phoneDigits ? `https://wa.me/${phoneDigits}` : '#')
+      };
+    }
+
+    function applyTheme() {
+      const theme = APP.theme || {};
+      const root = document.documentElement;
+      const variables = {
+        '--bg': theme.bg,
+        '--bg-strong': theme.bgStrong,
+        '--surface': theme.surface,
+        '--text': theme.text,
+        '--muted': theme.muted,
+        '--brand': theme.brand,
+        '--brand-strong': theme.brandStrong,
+        '--brand-accent': theme.brandAccent,
+        '--ring': theme.ring,
+        '--radius': theme.radius,
+        '--radius-lg': theme.radiusLg,
+        '--container-pad': theme.containerPad,
+        '--hero-image-h': theme.heroImageHeight,
+        '--section-space': theme.sectionSpace,
+        '--font-heading': theme.fontHeading,
+        '--font-body': theme.fontBody
+      };
+
+      Object.entries(variables).forEach(([key, value]) => {
+        if (value) root.style.setProperty(key, value);
+      });
+    }
+
+    function bindConfig() {
+      Object.entries(APP).forEach(([key, value]) => {
+        if (typeof value === 'string' || typeof value === 'number') {
+          document.querySelectorAll(`[data-bind="${key}"]`).forEach((el) => {
+            el.textContent = String(value);
+          });
+          document.querySelectorAll(`[data-bind-src="${key}"]`).forEach((el) => {
+            el.setAttribute('src', String(value));
+          });
+          document.querySelectorAll(`[data-bind-href="${key}"]`).forEach((el) => {
+            el.setAttribute('href', String(value));
+          });
+        }
+      });
+
+      const titleSuffix = APP.seo?.titleSuffix || 'Restaurante';
+      document.title = `${APP.businessName} | ${titleSuffix}`;
+
+      const desc = document.querySelector('meta[name="description"]');
+      if (desc) desc.setAttribute('content', APP.seo?.description || `${APP.businessName}: cocina mediterránea a la brasa y producto de temporada.`);
+
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) ogTitle.setAttribute('content', document.title);
+
+      const ogDescription = document.querySelector('meta[property="og:description"]');
+      if (ogDescription) ogDescription.setAttribute('content', APP.seo?.description || '');
+
+      const ogImage = document.querySelector('meta[property="og:image"]');
+      if (ogImage && APP.seo?.ogImage) ogImage.setAttribute('content', APP.seo.ogImage);
+
+      const themeColor = document.querySelector('meta[name="theme-color"]');
+      if (themeColor && APP.theme?.brand) themeColor.setAttribute('content', APP.theme.brand);
+    }
+
+    function renderFeatures() {
+      const container = document.getElementById('featuresGrid');
+      container.innerHTML = APP.features.map((item) => `
+        <article class="card fade-in">
+          <h3>${item.title}</h3>
+          <p>${item.text}</p>
+        </article>
+      `).join('');
+    }
+
+    function renderHighlights() {
+      const grid = document.getElementById('highlightGrid');
+      if (!grid) return;
+      grid.innerHTML = APP.highlights.map((item) => `
+        <article class="highlight-card fade-in">
+          <p class="highlight-value">${item.value}</p>
+          <p class="highlight-label">${item.label}</p>
+        </article>
+      `).join('');
+    }
+
+    function renderMenu() {
+      const list = document.getElementById('menuList');
+      list.innerHTML = APP.menuHighlights.map((item) => `
+        <article class="menu-item fade-in">
+          <div class="menu-top"><h3>${item.name}</h3><span class="price">${item.price}</span></div>
+          <p>${item.description}</p>
+        </article>
+      `).join('');
+    }
+
+    function renderExperiences() {
+      const grid = document.getElementById('experienceGrid');
+      if (!grid) return;
+      grid.innerHTML = APP.experiences.map((item) => `
+        <article class="experience-panel fade-in">
+          <img src="${item.image}" alt="${item.alt}" loading="lazy" />
+          <div class="experience-content">
+            <h3>${item.title}</h3>
+            <p>${item.text}</p>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function renderGallery() {
+      const grid = document.getElementById('galleryGrid');
+      grid.innerHTML = APP.gallery.map((image) => `
+        <img class="fade-in" src="${image.src}" alt="${image.alt}" loading="lazy" />
+      `).join('');
+    }
+
+    function renderFaq() {
+      const list = document.getElementById('faqList');
+      list.innerHTML = APP.faqs.map((item) => `
+        <details class="fade-in">
+          <summary>${item.question}</summary>
+          <p>${item.answer}</p>
+        </details>
+      `).join('');
+    }
+
+    function renderTestimonials() {
+      const grid = document.getElementById('testimonialGrid');
+      if (!grid) return;
+      grid.innerHTML = APP.testimonials.map((item) => `
+        <article class="quote-card fade-in">
+          <p>"${item.text}"</p>
+          <p class="quote-author">${item.author}</p>
+        </article>
+      `).join('');
+    }
+
+    function renderFormSubjects() {
+      const subject = document.getElementById('subject');
+      if (!subject) return;
+      const options = APP.formSubjects.map((item) => `<option value="${item.value}">${item.label}</option>`).join('');
+      subject.insertAdjacentHTML('beforeend', options);
+    }
+
+    function updateSchema() {
+      const schemaNode = document.getElementById('schemaData');
+      if (!schemaNode) return;
+
+      const schema = {
+        '@context': 'https://schema.org',
+        '@type': 'Restaurant',
+        name: APP.businessName,
+        telephone: APP.phone,
+        email: APP.email,
+        servesCuisine: APP.schemaCuisine,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: APP.address,
+          addressLocality: APP.city,
+          addressCountry: APP.schemaCountryCode
+        },
+        openingHours: APP.schemaOpeningHours
+      };
+
+      schemaNode.textContent = JSON.stringify(schema, null, 2);
+    }
+
+    function setupMenu() {
+      const toggle = document.getElementById('menuToggle');
+      const nav = document.getElementById('mainNav');
+      const closeMenu = () => {
+        nav.classList.remove('open');
+        toggle.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      };
+
+      toggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+        toggle.classList.toggle('is-open', isOpen);
+      });
+
+      nav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          closeMenu();
+        });
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 760) {
+          closeMenu();
+        }
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && nav.classList.contains('open')) {
+          closeMenu();
+          toggle.focus();
+        }
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!nav.classList.contains('open')) return;
+        if (toggle.contains(event.target) || nav.contains(event.target)) return;
+        closeMenu();
+      });
+    }
+
+    function setupReveal() {
+      const items = document.querySelectorAll('.fade-in');
+      const obs = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      items.forEach((item, i) => {
+        item.style.transitionDelay = `${Math.min(i * 36, 220)}ms`;
+        obs.observe(item);
+      });
+    }
+
+    function setupHeaderState() {
+      const header = document.querySelector('.header');
+      if (!header) return;
+
+      const onScroll = () => {
+        header.classList.toggle('scrolled', window.scrollY > 8);
+      };
+
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+
+    function setupForm() {
+      const form = document.getElementById('contactForm');
+      const status = document.getElementById('formStatus');
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        if (!form.checkValidity()) {
+          status.textContent = 'Revisa los campos obligatorios antes de enviar.';
+          form.reportValidity();
+          return;
+        }
+
+        status.textContent = 'Mensaje enviado. Te responderemos lo antes posible.';
+        form.reset();
+      });
+    }
+
+    function setupYear() {
+      document.getElementById('year').textContent = String(new Date().getFullYear());
+    }
+
+    function setupImageFallback() {
+      document.querySelectorAll('img').forEach((img) => {
+        if (img.dataset.fallbackBound === '1') return;
+        img.dataset.fallbackBound = '1';
+
+        img.addEventListener('error', () => {
+          if (img.dataset.fallbackApplied === '1') return;
+          img.dataset.fallbackApplied = '1';
+          img.src = FALLBACK_IMAGE;
+        });
+
+        if (img.complete && img.naturalWidth === 0) {
+          img.src = FALLBACK_IMAGE;
+        }
+      });
+    }
+
+    applyTheme();
+    renderFeatures();
+    renderHighlights();
+    renderMenu();
+    renderExperiences();
+    renderGallery();
+    renderFaq();
+    renderTestimonials();
+    renderFormSubjects();
+    updateSchema();
+    bindConfig();
+    setupMenu();
+    setupHeaderState();
+    setupReveal();
+    setupImageFallback();
+    setupForm();
+    setupYear();
+  </script>
+</body>
+</html>
