@@ -1264,9 +1264,6 @@
         const href = (link.getAttribute('href') || '').trim();
         if (href !== '#') return;
 
-        link.setAttribute('aria-disabled', 'true');
-        link.style.opacity = '0.72';
-        link.style.cursor = 'not-allowed';
         link.addEventListener('click', (event) => {
           event.preventDefault();
         });
@@ -1311,7 +1308,6 @@
   </script>
 </body>
 </html>
-
 
 
 
