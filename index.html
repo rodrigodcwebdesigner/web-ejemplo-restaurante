@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Brasa Norte | Restaurante en Valencia</title>
-  <meta name="description" content="Brasa Norte: cocina mediterránea a la brasa, arroces y producto de temporada en Valencia." />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <title>Norialba | Restaurante en Valencia</title>
+  <meta name="description" content="Norialba: cocina mediterránea a la brasa, arroces y producto de temporada en Valencia." />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Brasa Norte | Restaurante en Valencia" />
+  <meta property="og:title" content="Norialba | Restaurante en Valencia" />
   <meta property="og:description" content="Cocina mediterránea a la brasa, ambiente elegante y reservas para comidas y cenas." />
   <meta property="og:image" content="assets/images/fallback.svg" />
   <meta name="theme-color" content="#bd5f36" />
@@ -662,7 +663,7 @@
     <div class="container header-inner">
       <a class="brand" href="#inicio" aria-label="Ir al inicio">
         <span class="brand-mark" aria-hidden="true"></span>
-        <span data-bind="businessName">Brasa Norte</span>
+        <span data-bind="businessName">Norialba</span>
       </a>
 
       <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Abrir menú principal">
@@ -701,7 +702,7 @@
           <div class="mini-meta">
             <span data-bind="hoursShort">Mar-Dom 13:00-23:00</span>
             <span data-bind="city">Valencia, España</span>
-            <a data-bind="phone" data-bind-href="phoneUrl" href="tel:+34960000111">+34 960 000 111</a>
+            <a data-bind="phone" data-bind-href="phoneUrl" href="#">Atención telefónica bajo reserva</a>
           </div>
 
           <div class="highlights" id="highlightGrid"></div>
@@ -748,7 +749,7 @@
       <div class="container">
         <div class="section-head">
           <h2 data-bind="galleryTitle">Galería</h2>
-          <p data-bind="gallerySubtitle">Así se vive Brasa Norte cada día.</p>
+          <p data-bind="gallerySubtitle">Así se vive Norialba cada día.</p>
         </div>
         <div class="gallery" id="galleryGrid"></div>
       </div>
@@ -768,7 +769,7 @@
       <div class="container">
         <div class="section-head">
           <h2 data-bind="testimonialsTitle">Lo que dicen nuestros clientes</h2>
-          <p data-bind="testimonialsSubtitle">Valoraciones reales sobre cocina, servicio y ambiente.</p>
+          <p data-bind="testimonialsSubtitle">Opiniones de ejemplo para visualizar diseño y estilo de marca.</p>
         </div>
         <div class="quote-grid" id="testimonialGrid"></div>
       </div>
@@ -778,7 +779,7 @@
       <div class="container">
         <article class="reserve-band fade-in">
           <div>
-            <h3 data-bind="bookingTitle">Reserva tu mesa en Brasa Norte</h3>
+            <h3 data-bind="bookingTitle">Reserva tu mesa en Norialba</h3>
             <p data-bind="bookingDescription">Abrimos de martes a domingo. También organizamos eventos privados y grupos.</p>
           </div>
           <a class="btn btn-secondary reserve-btn" data-bind-href="bookingUrl" href="#contacto">Reservar ahora</a>
@@ -793,10 +794,10 @@
           <p class="contact-card-subtitle" data-bind="contactSubtitle">Reserva tu mesa o escríbenos para eventos y grupos.</p>
           <ul class="info-list">
             <li><strong>Horario:</strong> <span data-bind="hoursLong">Martes a domingo de 13:00 a 16:30 y 20:00 a 23:30</span></li>
-            <li><strong>Dirección:</strong> <span data-bind="address">Calle del Mercado 28, Valencia</span></li>
+            <li><strong>Dirección:</strong> <span data-bind="address">Dirección de ejemplo 123, Valencia</span></li>
             <li><strong>Ciudad:</strong> <span data-bind="city">Valencia, España</span></li>
-            <li><strong>Teléfono:</strong> <span data-bind="phone">+34 960 000 111</span></li>
-            <li><strong>Email:</strong> <span data-bind="email">contacto@brasanorte.com</span></li>
+            <li><strong>Teléfono:</strong> <span data-bind="phone">Atención telefónica bajo reserva</span></li>
+            <li><strong>Email:</strong> <span data-bind="email">reservas@norialba.example</span></li>
           </ul>
           <div class="cta-row contact-actions">
             <a class="btn btn-secondary" data-bind-href="whatsappUrl" target="_blank" rel="noopener">WhatsApp</a>
@@ -842,7 +843,7 @@
 
   <footer class="footer">
     <div class="container footer-row">
-      <small>© <span id="year"></span> <span data-bind="businessName">Brasa Norte</span>. Todos los derechos reservados.</small>
+      <small>© <span id="year"></span> <span data-bind="businessName">Norialba</span>. Todos los derechos reservados.</small>
       <small data-bind="footerText">Cocina mediterránea a la brasa en Valencia.</small>
     </div>
   </footer>
@@ -851,13 +852,13 @@
   {
     "@context": "https://schema.org",
     "@type": "Restaurant",
-    "name": "Brasa Norte",
-    "telephone": "+34 960 000 111",
-    "email": "contacto@brasanorte.com",
+    "name": "Norialba",
+    "telephone": "Atención telefónica bajo reserva",
+    "email": "reservas@norialba.example",
     "servesCuisine": ["Mediterránea", "Brasa"],
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Calle del Mercado 28",
+      "streetAddress": "Dirección de ejemplo 123",
       "addressLocality": "Valencia",
       "addressCountry": "ES"
     },
@@ -892,10 +893,10 @@
       },
       seo: {
         titleSuffix: 'Restaurante en Valencia',
-        description: 'Brasa Norte: cocina mediterránea a la brasa, arroces y producto de temporada en Valencia.',
+        description: 'Norialba: cocina mediterránea a la brasa, arroces y producto de temporada en Valencia.',
         ogImage: IMAGES.index?.seoOg || FALLBACK_IMAGE
       },
-      businessName: 'Brasa Norte',
+      businessName: 'Norialba',
       tagline: 'Sabores de brasa, cocina contemporánea',
       heroTitle: 'Cocina de brasa con producto de temporada',
       heroDescription: 'Sabores mediterráneos, técnica actual y una carta pensada para compartir momentos especiales en pleno centro de Valencia.',
@@ -908,20 +909,23 @@
       experienceTitle: 'Una experiencia para recordar',
       experienceSubtitle: 'Más que una cena: cocina, sala y ambiente en equilibrio.',
       galleryTitle: 'Galería',
-      gallerySubtitle: 'Así se vive Brasa Norte cada día.',
+      gallerySubtitle: 'Así se vive Norialba cada día.',
       faqTitle: 'Preguntas frecuentes',
       faqSubtitle: 'Resolvemos las dudas más habituales antes de tu visita.',
       testimonialsTitle: 'Lo que dicen nuestros clientes',
-      testimonialsSubtitle: 'Valoraciones reales sobre cocina, servicio y ambiente.',
-      bookingTitle: 'Reserva tu mesa en Brasa Norte',
+      testimonialsSubtitle: 'Opiniones de ejemplo para visualizar diseño y estilo de marca.',
+      bookingTitle: 'Reserva tu mesa en Norialba',
       bookingDescription: 'Abrimos de martes a domingo. También organizamos eventos privados y grupos.',
       contactTitle: 'Contacto',
       contactSubtitle: 'Reserva tu mesa o escríbenos para eventos y grupos.',
       footerText: 'Cocina mediterránea a la brasa en Valencia.',
       city: 'Valencia, España',
-      address: 'Calle del Mercado 28, Valencia',
-      phone: '+34 960 000 111',
-      email: 'contacto@brasanorte.com',
+      address: 'Dirección de ejemplo 123, Valencia',
+      phone: 'Atención telefónica bajo reserva',
+      email: 'reservas@norialba.example',
+      phoneUrl: '#',
+      emailUrl: '#',
+      whatsappUrl: '#',
       bookingUrl: '#contacto',
       hoursShort: 'Mar-Dom 13:00-23:00',
       hoursLong: 'Martes a domingo de 13:00 a 16:30 y 20:00 a 23:30',
@@ -985,13 +989,11 @@
     const APP = buildModel(CONFIG);
 
     function buildModel(config) {
-      const phoneDigits = String(config.phone || '').replace(/\D/g, '');
-      const safePhone = String(config.phone || '').replace(/[^+\d]/g, '');
       return {
         ...config,
-        phoneUrl: config.phoneUrl || (safePhone ? `tel:${safePhone}` : '#'),
-        emailUrl: config.emailUrl || (config.email ? `mailto:${config.email}` : '#'),
-        whatsappUrl: config.whatsappUrl || (phoneDigits ? `https://wa.me/${phoneDigits}` : '#')
+        phoneUrl: config.phoneUrl || '#',
+        emailUrl: config.emailUrl || '#',
+        whatsappUrl: config.whatsappUrl || '#'
       };
     }
 
@@ -1242,13 +1244,33 @@
           return;
         }
 
-        status.textContent = 'Mensaje enviado. Te responderemos lo antes posible.';
+        status.textContent = 'Mensaje enviado correctamente. Te responderemos lo antes posible.';
         form.reset();
       });
     }
 
     function setupYear() {
       document.getElementById('year').textContent = String(new Date().getFullYear());
+    }
+
+    function setupDemoContactLinks() {
+      const selectors = [
+        '[data-bind-href="phoneUrl"]',
+        '[data-bind-href="emailUrl"]',
+        '[data-bind-href="whatsappUrl"]'
+      ];
+
+      document.querySelectorAll(selectors.join(',')).forEach((link) => {
+        const href = (link.getAttribute('href') || '').trim();
+        if (href !== '#') return;
+
+        link.setAttribute('aria-disabled', 'true');
+        link.style.opacity = '0.72';
+        link.style.cursor = 'not-allowed';
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+        });
+      });
     }
 
     function setupImageFallback() {
@@ -1285,6 +1307,19 @@
     setupImageFallback();
     setupForm();
     setupYear();
+    setupDemoContactLinks();
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
