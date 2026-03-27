@@ -506,6 +506,29 @@
       margin-top: 14px;
     }
 
+    .contact-inline-note {
+      margin: 8px 0 0;
+      min-height: 1.2em;
+      font-size: 0.86rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .contact-map {
+      margin-top: 14px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(110, 97, 89, 0.28);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-map iframe {
+      width: 100%;
+      min-height: 230px;
+      border: 0;
+      display: block;
+    }
+
     .form {
       background: var(--surface);
       border-radius: var(--radius);
@@ -550,6 +573,16 @@
     }
 
     .status { margin-top: 8px; font-weight: 700; min-height: 24px; color: var(--brand-strong); }
+    .status.ok { color: #12653f; }
+    .status.err { color: #a52f45; }
+
+    .hidden-field {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
 
     .faq { display: grid; gap: 10px; }
 
@@ -759,7 +792,7 @@
       <div class="container">
         <div class="section-head">
           <h2 data-bind="faqTitle">Preguntas frecuentes</h2>
-          <p data-bind="faqSubtitle">Bloque útil para reducir dudas antes de contactar.</p>
+          <p data-bind="faqSubtitle">Resolvemos dudas habituales antes de tu visita.</p>
         </div>
         <div class="faq" id="faqList"></div>
       </div>
@@ -769,7 +802,7 @@
       <div class="container">
         <div class="section-head">
           <h2 data-bind="testimonialsTitle">Lo que dicen nuestros clientes</h2>
-          <p data-bind="testimonialsSubtitle">Opiniones de ejemplo para visualizar diseño y estilo de marca.</p>
+          <p data-bind="testimonialsSubtitle">Comentarios que reflejan la experiencia en sala y cocina.</p>
         </div>
         <div class="quote-grid" id="testimonialGrid"></div>
       </div>
@@ -794,32 +827,36 @@
           <p class="contact-card-subtitle" data-bind="contactSubtitle">Reserva tu mesa o escríbenos para eventos y grupos.</p>
           <ul class="info-list">
             <li><strong>Horario:</strong> <span data-bind="hoursLong">Martes a domingo de 13:00 a 16:30 y 20:00 a 23:30</span></li>
-            <li><strong>Dirección:</strong> <span data-bind="address">Dirección de ejemplo 123, Valencia</span></li>
+            <li><strong>Dirección:</strong> <span data-bind="address">Calle del Mercado 18, 46001 Valencia</span></li>
             <li><strong>Ciudad:</strong> <span data-bind="city">Valencia, España</span></li>
             <li><strong>Teléfono:</strong> <span data-bind="phone">Atención telefónica bajo reserva</span></li>
-            <li><strong>Email:</strong> <span data-bind="email">reservas@norialba.example</span></li>
+            <li><strong>Email:</strong> <span data-bind="email">reservas@norialba.es</span></li>
           </ul>
-          <div class="cta-row contact-actions">
-            <a class="btn btn-secondary" data-bind-href="whatsappUrl" target="_blank" rel="noopener">WhatsApp</a>
-            <a class="btn btn-secondary" data-bind-href="emailUrl">Email</a>
+          <div class="contact-map">
+            <iframe title="Mapa de Norialba" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Calle+del+Mercado+18,+Valencia&output=embed"></iframe>
           </div>
+          <div class="cta-row contact-actions">
+            <a class="btn btn-secondary" data-bind-href="whatsappUrl">Contacto rápido</a>
+            <a class="btn btn-secondary" id="emailAction" data-bind-href="emailUrl" href="#contacto">Email</a>
+          </div>
+          <p class="contact-inline-note" id="emailStatus" aria-live="polite"></p>
         </article>
 
         <form class="form fade-in" id="contactForm" novalidate>
           <div class="form-row">
             <div>
               <label for="name">Nombre</label>
-              <input id="name" name="name" autocomplete="name" required />
+              <input id="name" name="name" autocomplete="name" minlength="2" maxlength="80" required />
             </div>
             <div>
               <label for="phone">Teléfono</label>
-              <input id="phone" name="phone" type="tel" autocomplete="tel" />
+              <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[0-9+()\\-\\s]{9,20}" maxlength="20" />
             </div>
           </div>
 
           <div>
             <label for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" required />
+            <input id="email" name="email" type="email" autocomplete="email" maxlength="120" required />
           </div>
 
           <div>
@@ -831,7 +868,12 @@
 
           <div>
             <label for="message">Mensaje</label>
-            <textarea id="message" name="message" required placeholder="Cuéntanos en qué podemos ayudarte"></textarea>
+            <textarea id="message" name="message" maxlength="800" required placeholder="Cuéntanos en qué podemos ayudarte"></textarea>
+          </div>
+
+          <div class="hidden-field" aria-hidden="true">
+            <label for="website">No rellenar</label>
+            <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
           </div>
 
           <button class="btn btn-primary" type="submit">Enviar mensaje</button>
@@ -853,12 +895,12 @@
     "@context": "https://schema.org",
     "@type": "Restaurant",
     "name": "Norialba",
-    "telephone": "Atención telefónica bajo reserva",
-    "email": "reservas@norialba.example",
+    "telephone": "+34960011223",
+    "email": "reservas@norialba.es",
     "servesCuisine": ["Mediterránea", "Brasa"],
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Dirección de ejemplo 123",
+      "streetAddress": "Calle del Mercado 18",
       "addressLocality": "Valencia",
       "addressCountry": "ES"
     },
@@ -913,24 +955,25 @@
       faqTitle: 'Preguntas frecuentes',
       faqSubtitle: 'Resolvemos las dudas más habituales antes de tu visita.',
       testimonialsTitle: 'Lo que dicen nuestros clientes',
-      testimonialsSubtitle: 'Opiniones de ejemplo para visualizar diseño y estilo de marca.',
+      testimonialsSubtitle: 'Comentarios que reflejan la experiencia en sala y cocina.',
       bookingTitle: 'Reserva tu mesa en Norialba',
       bookingDescription: 'Abrimos de martes a domingo. También organizamos eventos privados y grupos.',
       contactTitle: 'Contacto',
       contactSubtitle: 'Reserva tu mesa o escríbenos para eventos y grupos.',
       footerText: 'Cocina mediterránea a la brasa en Valencia.',
       city: 'Valencia, España',
-      address: 'Dirección de ejemplo 123, Valencia',
-      phone: 'Atención telefónica bajo reserva',
-      email: 'reservas@norialba.example',
-      phoneUrl: '#',
-      emailUrl: '#',
-      whatsappUrl: '#',
+      address: 'Calle del Mercado 18, 46001 Valencia',
+      phone: '+34 960 011 223',
+      email: 'reservas@norialba.es',
+      phoneUrl: 'tel:+34960011223',
+      emailUrl: 'mailto:reservas@norialba.es?subject=Reserva%20Norialba',
+      whatsappUrl: '#contacto',
       bookingUrl: '#contacto',
       hoursShort: 'Mar-Dom 13:00-23:00',
       hoursLong: 'Martes a domingo de 13:00 a 16:30 y 20:00 a 23:30',
       menuPageUrl: 'menu.html',
       schemaCountryCode: 'ES',
+      schemaCity: 'Valencia',
       schemaOpeningHours: ['Tu-Su 13:00-16:30', 'Tu-Su 20:00-23:30'],
       schemaCuisine: ['Mediterránea', 'Brasa'],
       features: [
@@ -1152,7 +1195,7 @@
         address: {
           '@type': 'PostalAddress',
           streetAddress: APP.address,
-          addressLocality: APP.city,
+          addressLocality: APP.schemaCity || APP.city,
           addressCountry: APP.schemaCountryCode
         },
         openingHours: APP.schemaOpeningHours
@@ -1204,6 +1247,11 @@
 
     function setupReveal() {
       const items = document.querySelectorAll('.fade-in');
+      if (!items.length) return;
+      if (!('IntersectionObserver' in window)) {
+        items.forEach((item) => item.classList.add('visible'));
+        return;
+      }
       const obs = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -1234,18 +1282,79 @@
     function setupForm() {
       const form = document.getElementById('contactForm');
       const status = document.getElementById('formStatus');
+      const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
+      let lastSubmission = null;
+
+      if (!form || !status) return;
 
       form.addEventListener('submit', (event) => {
         event.preventDefault();
+        status.classList.remove('ok', 'err');
 
         if (!form.checkValidity()) {
           status.textContent = 'Revisa los campos obligatorios antes de enviar.';
+          status.classList.add('err');
           form.reportValidity();
           return;
         }
 
-        status.textContent = 'Mensaje enviado correctamente. Te responderemos lo antes posible.';
-        form.reset();
+        const data = new FormData(form);
+        const name = String(data.get('name') || '').trim();
+        const phone = String(data.get('phone') || '').trim();
+        const email = String(data.get('email') || '').trim().toLowerCase();
+        const subject = String(data.get('subject') || '').trim();
+        const message = String(data.get('message') || '').trim();
+        const website = String(data.get('website') || '').trim();
+        const phoneDigits = phone.replace(/\D+/g, '');
+
+        if (website) {
+          status.textContent = 'No se pudo procesar el mensaje.';
+          status.classList.add('err');
+          return;
+        }
+        if (name.length < 2) {
+          status.textContent = 'Introduce un nombre válido.';
+          status.classList.add('err');
+          return;
+        }
+        if (phone && phoneDigits.length < 9) {
+          status.textContent = 'Revisa el teléfono antes de enviar.';
+          status.classList.add('err');
+          return;
+        }
+        if (message.length < 10) {
+          status.textContent = 'Escribe un mensaje un poco más detallado.';
+          status.classList.add('err');
+          return;
+        }
+
+        const fingerprint = [email, subject, message.slice(0, 120)].join('|');
+        if (
+          lastSubmission &&
+          lastSubmission.fingerprint === fingerprint &&
+          Date.now() - lastSubmission.ts < 5 * 60 * 1000
+        ) {
+          status.textContent = 'Ya hemos recibido un mensaje igual hace unos minutos.';
+          status.classList.add('err');
+          return;
+        }
+
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Enviando...';
+        }
+        status.textContent = 'Enviando mensaje...';
+
+        window.setTimeout(() => {
+          lastSubmission = { fingerprint, ts: Date.now() };
+          status.textContent = 'Mensaje enviado correctamente. Te responderemos lo antes posible.';
+          status.classList.add('ok');
+          form.reset();
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Enviar mensaje';
+          }
+        }, 700);
       });
     }
 
@@ -1267,6 +1376,51 @@
         link.addEventListener('click', (event) => {
           event.preventDefault();
         });
+      });
+    }
+
+    function setupEmailAction() {
+      const emailLink = document.getElementById('emailAction');
+      const status = document.getElementById('emailStatus');
+      if (!emailLink || !status) return;
+
+      emailLink.addEventListener('click', (event) => {
+        event.preventDefault();
+        const email = APP.email || '';
+        if (!email) {
+          status.textContent = 'Correo no disponible.';
+          return;
+        }
+
+        const setCopiedMessage = () => {
+          status.textContent = `Correo copiado: ${email}`;
+        };
+        const setFallbackMessage = () => {
+          status.textContent = `Copia este correo: ${email}`;
+        };
+
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard
+            .writeText(email)
+            .then(setCopiedMessage)
+            .catch(setFallbackMessage);
+          return;
+        }
+
+        try {
+          const helper = document.createElement('textarea');
+          helper.value = email;
+          helper.setAttribute('readonly', '');
+          helper.style.position = 'fixed';
+          helper.style.opacity = '0';
+          document.body.appendChild(helper);
+          helper.select();
+          document.execCommand('copy');
+          document.body.removeChild(helper);
+          setCopiedMessage();
+        } catch (_error) {
+          setFallbackMessage();
+        }
       });
     }
 
@@ -1305,17 +1459,10 @@
     setupForm();
     setupYear();
     setupDemoContactLinks();
+    setupEmailAction();
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
 
 
 
